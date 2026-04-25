@@ -151,7 +151,7 @@ export default async function DashboardPage() {
                       </td>
                     </tr>
                   ) : (
-                    servicios.map((srv) => {
+                    servicios.map((srv: any) => {
                       let stateColor = "text-gray-500";
                       let stateBg = "bg-gray-500";
                       
