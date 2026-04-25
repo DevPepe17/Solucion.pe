@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Usuario {
+  id       Int    @id @default(autoincrement())
+  usuario  String @unique
+  password String
+  nombre   String
+}
+
+model Cliente {
+  dni      String     @id @db.VarChar(8)
+  nombre   String
+  telefono String
+  servicios Servicio[]
+}
+
+model Servicio {
+  id               Int       @id @default(autoincrement())
+  dni_cliente      String    @db.VarChar(8)
+  cliente          Cliente   @relation(fields: [dni_cliente], references: [dni])
+  tipo_equipo      String
+  marca            String
+  modelo           String
+  especificaciones String    @db.Text
+  tipo_servicio    String
+  problema         String    @db.Text
+  observaciones    String?   @db.Text
+  fecha_registro   DateTime  @default(now())
+  fecha_entrega    DateTime?
+  costo_total      Decimal?  @db.Decimal(10, 2)
+  estado           Estado    @default(PENDIENTE)
+  uuid_seguimiento String    @unique @default(uuid()) @db.Uuid
+}
+
+enum Estado {
+  PENDIENTE
+  PROCESO
+  LISTO
+  ENTREGADO
+}

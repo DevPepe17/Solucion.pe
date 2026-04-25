@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  --color-primary: #FFB800; /* Amarillo SOLUCION.PE */
+  --color-primary-hover: #E6A600;
+  
+  /* Estados */
+  --color-pendiente: #F44336; /* Rojo */
+  --color-proceso: #FFC107; /* Amarillo */
+  --color-listo: #4CAF50; /* Verde */
+  --color-entregado: #607D8B; /* Gris/Azul */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  --color-solucion-yellow: var(--color-primary);
+  --color-solucion-yellow-hover: var(--color-primary-hover);
+  --color-solucion-bg: #121212;
+  --color-solucion-panel: #1E1E1E;
+  --color-solucion-border: #333333;
+}
+
+body {
+  background: var(--color-solucion-bg);
+  color: var(--foreground);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-solucion-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-solucion-panel);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-solucion-border);
+}
